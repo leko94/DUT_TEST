@@ -1,4 +1,3 @@
-
 import os
 import dash
 from dash import dcc, html
@@ -11,9 +10,15 @@ from sklearn.linear_model import LinearRegression
 # File path to the Excel file
 file_path = 'Students.xlsx'
 
+# Check if the file exists
+if not os.path.exists(file_path):
+    raise FileNotFoundError(f"The file {file_path} was not found. Please make sure it is present in the directory.")
+
 # Initialize the Dash app
 app = dash.Dash(__name__)
-sever = app.server
+
+# Expose the server variable for gunicorn
+server = app.server
 
 # Load data from Sheet1
 df1 = pd.read_excel(file_path, sheet_name='Sheet1')
