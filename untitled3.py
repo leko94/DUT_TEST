@@ -13,6 +13,7 @@ file_path = 'Students.xlsx'
 
 # Initialize the Dash app
 app = dash.Dash(__name__)
+sever = app.server
 
 # Load data from Sheet1
 df1 = pd.read_excel(file_path, sheet_name='Sheet1')
